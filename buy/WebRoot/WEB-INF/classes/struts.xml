@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+ <constant name="struts.devMode" value="false"/> 
+<package name="login" namespace="/login" extends="struts-default">
+<action name="loginSuccess" class="buy.service.login.LoginAction" method="login">
+<result name="success" type="dispatcher">/jsp/buy/Main.jsp</result>
+<result name="fail" type="dispatcher">/jsp/Login.jsp</result>
+</action>
+</package>
+
+<package name="register" namespace="/register" extends="struts-default">
+<action name="registerAction" class="buy.service.register.RegisterAction" method="register">
+<result name="success" type="dispatcher">/jsp/Message.jsp</result>
+</action>
+
+</package>
+
+
+</struts>
