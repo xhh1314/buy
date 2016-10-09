@@ -1,0 +1,52 @@
+ create table Category (
+        id integer not null auto_increment,
+        description varchar(255),
+        name varchar(255),
+        uuid varchar(255),
+        primary key (id)
+    );
+
+    create table Goods (
+        id integer not null auto_increment,
+        description varchar(255),
+        image_location varchar(255),
+        name varchar(255),
+        uuid varchar(255),
+        sub_id varchar(255),
+        primary key (id)
+    );
+
+    create table Subdivide (
+        id integer not null auto_increment,
+        desciption varchar(255),
+        name varchar(255),
+        uuid varchar(255),
+        cate_uuid varchar(255),
+        primary key (id)
+    );
+    
+    create table manager(
+    id integer not null auto_increment,
+    uuid varchar(100),
+    name varchar(50),
+    description varchar(255),
+    primary key(id),
+    constraint Uk_manager unique(uuid)
+    );
+    insert into manager (uuid,name,password,description)values('XXXX829388','admin','admin','管理员'); 
+    
+
+    alter table Category 
+        add constraint UK_7jl01a5cupkyqgxr5vc3y0cm1  unique (uuid);
+    alter table Subdivide 
+        add constraint UK_6s4o7v3t0nyu82b1c998kj56j  unique (uuid);
+
+    alter table Goods 
+        add constraint FK_goods_uuid 
+        foreign key (sub_id) 
+        references Subdivide (uuid);
+
+    alter table Subdivide 
+        add constraint FK_subdivide_uuid 
+        foreign key (cate_uuid) 
+        references Category (uuid);
